@@ -1,5 +1,5 @@
 # KLEE Install Script
-# Made for Ubuntu 15.04 x64
+# Made for Ubuntu 15.04
 # Installing KLEE 3.4 with LLVM 3.4 (both experimental)
 
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -20,16 +20,23 @@ ${YELLOW}This package will install the following:
 # Get info about host (sets OS, ARCH, and VER)
 . $SCRIPT_DIR/getHostInfo.sh
 
-contains() {
-  local e
-  for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
-  return 1
+array_contains () { 
+    local array="$1[@]"
+    local seeking=$2
+    local in=1
+    for element in "${!array}"; do
+        if [[ $element == $seeking ]]; then
+            in=0
+            break
+        fi
+    done
+    return $in
 }
 
 # List of what's been tested
-TESTED=("ubuntu_15.04_64")
+TESTED=(ubuntu_15.04_64 ubuntu_15.04_32)
 
-if ! contains $TESTED "${OS}_${VER}_${ARCH}"
+if ! array_contains TESTED "${OS}_${VER}_${ARCH}"
   then
     echo -e "${RED}Your OS Version ($OS $VER $ARCH) is untested!"
     echo -e "Press Enter to continue anyway ${NC}"

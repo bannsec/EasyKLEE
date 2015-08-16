@@ -11,7 +11,8 @@ echo -e "${YELLOW}
 ############${NC}
 "
 
-if [[ $VER == "15.04" && $ARCH == "64" ]]
+# Tested against both 32 and 64-bit
+if [[ $VER == "15.04" ]]
 	then
 
 	echo -e "${YELLOW}Downloading libgtest${NC}"

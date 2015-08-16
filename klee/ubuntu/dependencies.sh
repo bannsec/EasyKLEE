@@ -19,8 +19,13 @@ echo -e "${YELLOW}Installing Dependencies${NC}"
 
 if [[ $ARCH == "64" && $VER == "15.04" ]]
 	then
-	# Ubuntu deps
+	# Ubuntu 15.04 64
 	sudo apt-get install -y build-essential curl git bison flex bc libcap-dev git cmake libboost-all-dev libncurses5-dev python-minimal python-pip unzip lib32z1-dev build-essential cmake valgrind libm4ri-dev libmysqlclient-dev libsqlite3-dev libm4ri-dev
+
+elif [[ $ARCH == "32" && $VER == "15.04" ]]
+	then
+	# Ubuntu 15.04 32
+	sudo apt-get install -y build-essential curl git bison flex bc libcap-dev git cmake libboost-all-dev libncurses5-dev python-minimal python-pip unzip build-essential cmake valgrind libm4ri-dev libmysqlclient-dev libsqlite3-dev libm4ri-dev
 
 else
 	echo "${RED}PROBLEM! Didn't hit if statement!${NC}"

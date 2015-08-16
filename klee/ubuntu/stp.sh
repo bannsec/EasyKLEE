@@ -11,7 +11,8 @@ echo -e "${YELLOW}
 ###############${NC}
 "
 
-if [[ $VER == "15.04" && $ARCH == "64" ]]
+# Tested against both 32 and 64bit versions
+if [[ $VER == "15.04" ]]
 	then
 
 	echo -e "${YELLOW}Cloning MiniSat${NC}"
@@ -37,7 +38,7 @@ if [[ $VER == "15.04" && $ARCH == "64" ]]
 	cd cryptominisat
 
 	# Check out tag
-	git tag 4.5.2
+	git checkout tags/4.5.2
 
 	mkdir build
 	cd build
@@ -66,11 +67,13 @@ if [[ $VER == "15.04" && $ARCH == "64" ]]
 
 	echo -e "${YELLOW}Checking out STP 2.1.0${NC}"
 
-	git checkout tags/2.1.0
-
 	mkdir stp/build
 
-	cd stp/build
+	cd stp
+
+	git checkout tags/2.1.0
+
+	cd build
 
 	echo -e "${YELLOW}Configuring STP${NC}"
 
