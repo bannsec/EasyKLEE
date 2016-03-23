@@ -1,3 +1,4 @@
+#!/bin/bash
 # KLEE Install Script
 # Made for Ubuntu 15.04
 # Installing KLEE 3.4 with LLVM 3.4 (both experimental)
